@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/Game.gd" type="Script" id=1]
 [ext_resource path="res://src/background/Background.tscn" type="PackedScene" id=2]
@@ -14,6 +14,14 @@
 [ext_resource path="res://assets/sprites/birds/bird_grey.png" type="Texture" id=12]
 [ext_resource path="res://assets/sprites/buttons/tap_left.png" type="Texture" id=13]
 [ext_resource path="res://assets/sprites/misc/new.png" type="Texture" id=14]
+[ext_resource path="res://assets/sprites/buttons/leaderboard.png" type="Texture" id=15]
+[ext_resource path="res://assets/sprites/buttons/start.png" type="Texture" id=16]
+
+[sub_resource type="InputEventAction" id=1]
+action = "ui_accept"
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
 
 [node name="Game" type="Node2D"]
 pause_mode = 2
@@ -115,7 +123,7 @@ __meta__ = {
 }
 
 [node name="GameOver" type="Sprite" parent="Menu/Death"]
-position = Vector2( 72, 48 )
+position = Vector2( 72, 60 )
 texture = ExtResource( 7 )
 
 [node name="MedalBackground" type="Sprite" parent="Menu/Death"]
@@ -150,6 +158,30 @@ align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Restart" type="TextureButton" parent="Menu/Death"]
+margin_left = 16.0
+margin_top = 160.0
+margin_right = 68.0
+margin_bottom = 190.0
+shortcut_in_tooltip = false
+shortcut = SubResource( 2 )
+texture_normal = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Leaderboard" type="TextureButton" parent="Menu/Death"]
+margin_left = 76.0
+margin_top = 160.0
+margin_right = 128.0
+margin_bottom = 190.0
+shortcut_in_tooltip = false
+texture_normal = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="timeout" from="SpawnDelay" to="." method="_on_PipeSpawner_timeout"]
 [connection signal="pressed" from="Menu/HUD/PauseButton" to="." method="_on_PauseButton_pressed"]
 [connection signal="toggled" from="Menu/HUD/PauseButton" to="." method="_on_PauseButton_toggled"]
+[connection signal="pressed" from="Menu/Death/Restart" to="." method="_on_Restart_pressed"]

@@ -28,9 +28,7 @@ func _process(_delta):
 			if can_spawn:
 				spawn_pipe()
 		STATE.dead:
-			if Input.is_action_just_released("restart"):
-				if get_tree().reload_current_scene() != OK:
-					print("failed to reload scene")
+			pass
 	
 
 func _on_PipeSpawner_timeout():
@@ -70,3 +68,8 @@ func pause(flag: bool):
 
 func _on_PauseButton_toggled(button_pressed):
 	pause(button_pressed)
+
+
+func _on_Restart_pressed():
+	if get_tree().reload_current_scene() != OK:
+		print("failed to reload scene")
