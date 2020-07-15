@@ -7,16 +7,16 @@
 extents = Vector2( 12, 79 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 5, 127 )
+extents = Vector2( 1, 20 )
 
 [node name="Pipes" type="Node2D"]
 position = Vector2( 160, 140 )
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Hitbox" type="Area2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="BottomCollision" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource( 1 )
@@ -36,7 +36,10 @@ __meta__ = {
 texture = ExtResource( 1 )
 
 [node name="Point" type="Area2D" parent="."]
-position = Vector2( 15, -127 )
+position = Vector2( 15, -98 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Point"]
 shape = SubResource( 2 )

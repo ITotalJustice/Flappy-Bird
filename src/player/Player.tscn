@@ -38,6 +38,7 @@ __meta__ = {
 texture = ExtResource( 1 )
 vframes = 6
 hframes = 3
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -51,7 +52,7 @@ anims/Fly = SubResource( 2 )
 [node name="Hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 
-[node name="Fly" type="AudioStreamPlayer" parent="."]
+[node name="Flap" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 
 [node name="Point" type="AudioStreamPlayer" parent="."]

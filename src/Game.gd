@@ -7,7 +7,12 @@ var score := 0
 
 
 func _ready():
-	pass
+	randomize()
+	
+
+func _input(event):
+	if event.is_action_released("restart"):
+		get_tree().reload_current_scene()
 	
 
 func _process(delta):
