@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 
 enum STATE { idle, play, dead }
-
 const GRAVITY = 12.0
 const FLAP_HIEGHT = -160.0
 

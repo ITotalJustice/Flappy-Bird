@@ -26,8 +26,8 @@ config/icon="res://assets/icons/icon.png"
 
 [display]
 
-window/size/width=143
-window/size/height=255
+window/size/width=144
+window/size/height=256
 window/size/test_width=286
 window/size/test_height=510
 window/handheld/orientation="portrait"
