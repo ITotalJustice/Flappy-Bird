@@ -21,6 +21,7 @@ func _process(_delta):
 			if Input.is_action_just_released("fly"):
 				state = STATE.play
 				$Player.start()
+				$Menu/Intro.hide()
 		STATE.play:
 			if Input.is_action_just_pressed("ui_left"):
 				pause(!get_tree().paused)
@@ -46,17 +47,24 @@ func spawn_pipe():
 
 func increase_score():
 	score += 1
+	$Menu/HUD/Score.text = String(score)
 
 
 func game_over():
 	state = STATE.dead
 	get_tree().call_group("game_over", "stop")
+	$Menu/HUD.hide()
+	$Menu/Death.show()
 	$Background.set_physics_process(false)
 	$Death.play()
 
 
 func pause(flag: bool):
 	get_tree().paused = flag
+	if flag:
+		$Menu/Pause.show()
+	else:
+		$Menu/Pause.hide()
 
 
 func _on_PauseButton_toggled(button_pressed):

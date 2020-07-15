@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/Game.gd" type="Script" id=1]
 [ext_resource path="res://src/background/Background.tscn" type="PackedScene" id=2]
@@ -6,6 +6,14 @@
 [ext_resource path="res://assets/audio/death.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/sprites/buttons/play.png" type="Texture" id=5]
 [ext_resource path="res://assets/sprites/buttons/pause.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/titles/game_over.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/titles/get_ready.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/medals/medal_background.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/buttons/tap_right.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/misc/finger.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/birds/bird_grey.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/buttons/tap_left.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/misc/new.png" type="Texture" id=14]
 
 [node name="Game" type="Node2D"]
 pause_mode = 2
@@ -16,6 +24,7 @@ pause_mode = 1
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 pause_mode = 1
+position = Vector2( 32, 120 )
 
 [node name="SpawnDelay" type="Timer" parent="."]
 pause_mode = 1
@@ -26,7 +35,43 @@ autostart = true
 pause_mode = 1
 stream = ExtResource( 4 )
 
-[node name="PauseButton" type="TextureButton" parent="."]
+[node name="Menu" type="CanvasLayer" parent="."]
+
+[node name="Intro" type="Control" parent="Menu"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GetReady" type="Sprite" parent="Menu/Intro"]
+position = Vector2( 72, 64 )
+texture = ExtResource( 8 )
+
+[node name="GreyBird" type="Sprite" parent="Menu/Intro"]
+position = Vector2( 72, 104 )
+texture = ExtResource( 12 )
+
+[node name="Finger" type="Sprite" parent="Menu/Intro"]
+position = Vector2( 72, 136 )
+texture = ExtResource( 11 )
+
+[node name="TapLeft" type="Sprite" parent="Menu/Intro"]
+position = Vector2( 96, 144 )
+texture = ExtResource( 13 )
+
+[node name="TapRight" type="Sprite" parent="Menu/Intro"]
+position = Vector2( 48, 144 )
+texture = ExtResource( 10 )
+
+[node name="HUD" type="Control" parent="Menu"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseButton" type="TextureButton" parent="Menu/HUD"]
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 29.0
@@ -38,5 +83,70 @@ texture_pressed = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Score" type="Label" parent="Menu/HUD"]
+margin_left = 56.0
+margin_top = 16.0
+margin_right = 80.0
+margin_bottom = 30.0
+grow_horizontal = 2
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pause" type="Control" parent="Menu"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Death" type="Control" parent="Menu"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOver" type="Sprite" parent="Menu/Death"]
+position = Vector2( 72, 48 )
+texture = ExtResource( 7 )
+
+[node name="MedalBackground" type="Sprite" parent="Menu/Death"]
+position = Vector2( 72, 120 )
+texture = ExtResource( 9 )
+
+[node name="New" type="Sprite" parent="Menu/Death"]
+visible = false
+position = Vector2( 82, 102 )
+texture = ExtResource( 14 )
+
+[node name="Score" type="Label" parent="Menu/Death"]
+margin_left = 94.0
+margin_top = 108.0
+margin_right = 118.0
+margin_bottom = 122.0
+grow_horizontal = 0
+text = "0"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Best" type="Label" parent="Menu/Death"]
+margin_left = 94.0
+margin_top = 128.0
+margin_right = 118.0
+margin_bottom = 142.0
+grow_horizontal = 0
+text = "999"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="timeout" from="SpawnDelay" to="." method="_on_PipeSpawner_timeout"]
-[connection signal="toggled" from="PauseButton" to="." method="_on_PauseButton_toggled"]
+[connection signal="toggled" from="Menu/HUD/PauseButton" to="." method="_on_PauseButton_toggled"]
