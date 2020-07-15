@@ -29,7 +29,9 @@ centered = false
 [node name="Ground" type="ParallaxBackground" parent="."]
 layer = 0
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Ground"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Ground" groups=[
+"game_over",
+]]
 z_index = 100
 motion_mirroring = Vector2( 143, 0 )
 __meta__ = {

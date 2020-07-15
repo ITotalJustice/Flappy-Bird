@@ -1,24 +1,33 @@
 extends Node2D
 
 
+enum STATE { idle, play, dead }
+
 var Pipe := preload("res://src/objects/Pipes.tscn")
 var can_spawn := false
 var score := 0
+var state
 
 
 func _ready():
+	state = STATE.idle
 	$Player.position.x = 144 / 4
 	randomize()
 	
 
-func _input(event):
-	if event.is_action_released("restart"):
-		get_tree().reload_current_scene()
-	
-
-func _process(delta):
-	if can_spawn:
-		spawn_pipe()
+func _process(_delta):
+	match state:
+		STATE.idle:
+			if Input.is_action_just_released("fly"):
+				state = STATE.play
+				$Player.start()
+		STATE.play:
+			if can_spawn:
+				spawn_pipe()
+		STATE.dead:
+			if Input.is_action_just_released("restart"):
+				if get_tree().reload_current_scene() != OK:
+					print("failed to reload scene")
 	
 
 func _on_PipeSpawner_timeout():
@@ -38,4 +47,7 @@ func increase_score():
 
 
 func game_over():
+	state = STATE.dead
+	get_tree().call_group("game_over", "stop")
+	$Background.set_physics_process(false)
 	$Death.play()
