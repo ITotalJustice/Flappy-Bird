@@ -18,6 +18,9 @@ func _on_Point_body_entered(body):
 	if body.has_method("point"):
 		body.point()
 
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
+	
 
 func spawn():
 	var yrange := randi() % SPAWN_RANGE_Y
