@@ -6,7 +6,7 @@ const PIPE := preload("res://src/objects/Pipes.tscn")
 
 var can_spawn := false
 var score := 0
-var state
+var state := 0
 
 
 func _ready():
@@ -17,7 +17,7 @@ func _ready():
 func _process(_delta):
 	match state:
 		STATE.idle:
-			if Input.is_action_just_released("fly"):
+			if Input.is_action_just_pressed("fly"):
 				state = STATE.play
 				$Player.start()
 				$Menu/Intro.hide()
