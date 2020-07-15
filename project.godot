@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Flappy Bird"
-config/icon="res://icon.png"
+config/icon="res://assets/icons/icon.png"
 
 [gdnative]
 
