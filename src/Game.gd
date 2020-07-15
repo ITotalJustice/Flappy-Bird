@@ -20,6 +20,8 @@ func _on_PipeSpawner_timeout():
 
 
 func spawn_pipe():
+	can_spawn = false
+	$SpawnDelay.start()
 	var pipe := Pipe.instance()
 	add_child(pipe)
 	pipe.spawn()
@@ -27,7 +29,6 @@ func spawn_pipe():
 
 func increase_score():
 	score += 1
-	$Point.play()
 
 
 func game_over():
