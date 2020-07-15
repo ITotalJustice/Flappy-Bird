@@ -4,7 +4,7 @@ extends Node2D
 const SPEED := 100.0
 const SPAWN_RANGE_Y := 120
 
-
+	
 func _physics_process(delta):
 	position.x -= SPEED * delta
 

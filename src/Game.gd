@@ -22,6 +22,8 @@ func _process(_delta):
 				state = STATE.play
 				$Player.start()
 		STATE.play:
+			if Input.is_action_just_pressed("ui_left"):
+				pause(!get_tree().paused)
 			if can_spawn:
 				spawn_pipe()
 		STATE.dead:
@@ -51,3 +53,11 @@ func game_over():
 	get_tree().call_group("game_over", "stop")
 	$Background.set_physics_process(false)
 	$Death.play()
+
+
+func pause(flag: bool):
+	get_tree().paused = flag
+
+
+func _on_PauseButton_toggled(button_pressed):
+	pause(button_pressed)
