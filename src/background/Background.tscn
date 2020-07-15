@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/sprites/background/background_day.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/background/ground.png" type="Texture" id=2]
+[ext_resource path="res://src/background/Background.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 122, 5 )
+
+[node name="Background" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_mirroring = Vector2( 143, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Sky"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Ground" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 143, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Ground"]
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( 0, 200 )
+
+[node name="Clip" type="StaticBody2D" parent="."]
+
+[node name="Top" type="CollisionShape2D" parent="Clip"]
+position = Vector2( 72, -10 )
+shape = SubResource( 1 )
+
+[node name="Bottom" type="CollisionShape2D" parent="Clip"]
+position = Vector2( 72, 205 )
+shape = SubResource( 1 )
