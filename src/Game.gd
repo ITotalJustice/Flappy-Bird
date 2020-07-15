@@ -7,6 +7,7 @@ var score := 0
 
 
 func _ready():
+	$Player.position.x = 144 / 4
 	randomize()
 	
 

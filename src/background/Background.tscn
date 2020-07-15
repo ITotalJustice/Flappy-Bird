@@ -13,26 +13,31 @@ extents = Vector2( 72, 6 )
 [node name="Background" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="Sky" type="ParallaxBackground" parent="."]
 
-[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Sky"]
 motion_scale = Vector2( 0.1, 0.1 )
 motion_mirroring = Vector2( 143, 0 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/Sky"]
+[node name="Sprite" type="Sprite" parent="Sky/ParallaxLayer"]
 texture = ExtResource( 1 )
 centered = false
 
-[node name="Ground" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="Ground" type="ParallaxBackground" parent="."]
+layer = 0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Ground"]
+z_index = 100
 motion_mirroring = Vector2( 143, 0 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/Ground"]
+[node name="Sprite" type="Sprite" parent="Ground/ParallaxLayer"]
+z_index = 100
 texture = ExtResource( 2 )
 centered = false
 offset = Vector2( 0, 200 )
