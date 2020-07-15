@@ -68,7 +68,9 @@ pointing/emulate_touch_from_mouse=true
 
 quality/driver/driver_name="GLES2"
 quality/intended_usage/framebuffer_allocation=1
+quality/2d/use_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 quality/depth/hdr=false
 environment/default_environment="res://default_env.tres"
+quality/dynamic_fonts/use_oversampling=false
