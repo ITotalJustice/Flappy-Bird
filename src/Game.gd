@@ -52,9 +52,7 @@ func game_over():
 	state = STATE.dead
 	get_tree().call_group("game_over", "stop")
 	$Menu/HUD.hide()
-	$Menu/Death/Score.text = String(score)
-	$Menu/Death.show()
-	$Background.set_physics_process(false)
+	$Menu/Death.setup(score)
 	$Death.play()
 
 

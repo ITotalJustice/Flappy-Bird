@@ -10,7 +10,9 @@ extents = Vector2( 72, 5 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 72, 6 )
 
-[node name="Background" type="Node2D"]
+[node name="Background" type="Node2D" groups=[
+"game_over",
+]]
 script = ExtResource( 3 )
 
 [node name="Sky" type="ParallaxBackground" parent="."]

@@ -24,6 +24,10 @@ config/name="Flappy Bird"
 run/main_scene="res://src/Game.tscn"
 config/icon="res://assets/icons/icon.png"
 
+[autoload]
+
+Global="*res://src/global/Global.gd"
+
 [display]
 
 window/size/width=144

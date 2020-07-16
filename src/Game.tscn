@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/Game.gd" type="Script" id=1]
 [ext_resource path="res://src/background/Background.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://assets/sprites/misc/new.png" type="Texture" id=14]
 [ext_resource path="res://assets/sprites/buttons/leaderboard.png" type="Texture" id=15]
 [ext_resource path="res://assets/sprites/buttons/start.png" type="Texture" id=16]
+[ext_resource path="res://src/Death.gd" type="Script" id=17]
 
 [sub_resource type="InputEventAction" id=1]
 action = "ui_accept"
@@ -118,6 +119,7 @@ __meta__ = {
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
+script = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
