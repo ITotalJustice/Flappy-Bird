@@ -16,6 +16,9 @@ extents = Vector2( 72, 6 )
 script = ExtResource( 3 )
 
 [node name="Sky" type="ParallaxBackground" parent="."]
+offset = Vector2( 0, 144 )
+rotation = -1.5708
+transform = Transform2D( -4.37114e-08, -1, 1, -4.37114e-08, 0, 144 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Sky"]
 motion_scale = Vector2( 0.1, 0.1 )
@@ -30,6 +33,9 @@ centered = false
 
 [node name="Ground" type="ParallaxBackground" parent="."]
 layer = 0
+offset = Vector2( 0, 144 )
+rotation = -1.5708
+transform = Transform2D( -4.37114e-08, -1, 1, -4.37114e-08, 0, 144 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Ground" groups=[
 "game_over",

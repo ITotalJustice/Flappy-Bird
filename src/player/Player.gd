@@ -20,13 +20,13 @@ func _physics_process(delta):
 		STATE.idle:
 			pass
 		STATE.play:
-			velocity.y += GRAVITY
+			velocity.x += GRAVITY
 			if can_fly:
 				can_fly = false
 				$Flap.play()
-				velocity.y = FLAP_HIEGHT
+				velocity.x = FLAP_HIEGHT
 		STATE.dead:
-			velocity.y += GRAVITY
+			velocity.x += GRAVITY
 	var _collide := move_and_collide(velocity * delta)
 
 
