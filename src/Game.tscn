@@ -87,6 +87,7 @@ position = Vector2( 48, 144 )
 texture = ExtResource( 10 )
 
 [node name="HUD" type="Control" parent="Menu"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -198,6 +199,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="timeout" from="SpawnDelay" to="." method="_on_PipeSpawner_timeout"]
-[connection signal="pressed" from="Menu/HUD/PauseButton" to="." method="_on_PauseButton_pressed"]
 [connection signal="toggled" from="Menu/HUD/PauseButton" to="." method="_on_PauseButton_toggled"]
 [connection signal="pressed" from="Menu/Death/Restart" to="." method="_on_Restart_pressed"]

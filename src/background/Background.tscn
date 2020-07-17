@@ -48,9 +48,8 @@ centered = false
 offset = Vector2( 0, 201 )
 
 [node name="Clip" type="StaticBody2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
+collision_layer = 16
+collision_mask = 2
 
 [node name="Top" type="CollisionShape2D" parent="Clip"]
 position = Vector2( 72, -5 )
@@ -62,6 +61,8 @@ shape = SubResource( 1 )
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2( 72, 206 )
+collision_layer = 4
+collision_mask = 2
 __meta__ = {
 "_edit_group_": true
 }

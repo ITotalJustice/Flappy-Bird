@@ -6,36 +6,41 @@ const GRAVITY = 12.0
 const FLAP_HIEGHT = -160.0
 
 var velocity := Vector2()
-var state
+var state := 0
+var can_fly := false
 
 
 func _ready():
 	state = STATE.idle
+	#$AnimationPlayer.play("Idle")
 	
 
 func _physics_process(delta):
-	var _collide := move_and_collide(velocity * delta)
-	
-
-func _process(_delta):
 	match state:
 		STATE.idle:
 			pass
 		STATE.play:
 			velocity.y += GRAVITY
-			if Input.is_action_just_pressed("fly"):
+			if can_fly:
+				can_fly = false
 				$Flap.play()
 				velocity.y = FLAP_HIEGHT
 		STATE.dead:
 			velocity.y += GRAVITY
+	var _collide := move_and_collide(velocity * delta)
 
-	
+
+func _process(_delta):
+	if Input.is_action_just_pressed("fly"):
+		can_fly = true
+		
+
 func hit():
 	if state == STATE.dead:
 		return
 	$Hit.play()
-	velocity = Vector2()
 	state = STATE.dead
+	velocity = Vector2()
 	$AnimationPlayer.stop()
 	var parent := get_parent()
 	if parent.has_method("game_over"):
@@ -53,3 +58,4 @@ func point():
 
 func start():
 	state = STATE.play
+	$AnimationPlayer.play("Fly")
