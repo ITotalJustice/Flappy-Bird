@@ -12,7 +12,7 @@ var state := 0
 func _ready():
 	state = STATE.idle
 	randomize()
-	
+
 
 func _process(_delta):
 	if Input.is_action_just_released("ui_cancel"):
@@ -31,7 +31,7 @@ func _process(_delta):
 				spawn_pipe()
 		STATE.dead:
 			pass
-	
+
 
 func _on_PipeSpawner_timeout():
 	can_spawn = true
@@ -43,12 +43,11 @@ func spawn_pipe():
 	var pipe := PIPE.instance()
 	add_child(pipe)
 	pipe.spawn()
-	
+
 
 func increase_score():
 	score += 1
 	$Menu/HUD/Score.text = String(score)
-
 
 func game_over():
 	state = STATE.dead

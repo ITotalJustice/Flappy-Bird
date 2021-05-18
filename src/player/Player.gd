@@ -13,7 +13,7 @@ var can_fly := false
 func _ready():
 	state = STATE.idle
 	#$AnimationPlayer.play("Idle")
-	
+
 
 func _physics_process(delta):
 	match state:
@@ -33,7 +33,7 @@ func _physics_process(delta):
 func _process(_delta):
 	if Input.is_action_just_pressed("fly"):
 		can_fly = true
-		
+
 
 func hit():
 	if state == STATE.dead:
