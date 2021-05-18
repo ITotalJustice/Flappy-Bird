@@ -2,7 +2,7 @@
 
 A (WIP) flappy bird clone, made with Godot.
 
-Play it [here](https://totaljustice.co.uk/games/flappy_bird/)
+Play it [here](https://itotaljustice.github.io/Flappy-Bird/)
 
 ---
 
