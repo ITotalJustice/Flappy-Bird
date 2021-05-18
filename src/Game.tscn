@@ -198,6 +198,7 @@ texture_normal = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="timeout" from="SpawnDelay" to="." method="_on_PipeSpawner_timeout"]
 [connection signal="toggled" from="Menu/HUD/PauseButton" to="." method="_on_PauseButton_toggled"]
 [connection signal="pressed" from="Menu/Death/Restart" to="." method="_on_Restart_pressed"]

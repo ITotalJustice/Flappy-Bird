@@ -8,20 +8,12 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "",
-"class": "GitAPI",
-"language": "NativeScript",
-"path": "res://git_api.gdns"
-} ]
-_global_script_class_icons={
-"GitAPI": ""
-}
-
 [application]
 
 config/name="Flappy Bird"
 run/main_scene="res://src/Game.tscn"
+run/disable_stdout=true
+run/disable_stderr=true
 config/icon="res://assets/icons/icon.png"
 
 [autoload]
@@ -41,7 +33,7 @@ window/stretch/aspect="keep"
 
 [gdnative]
 
-singletons=[ "res://git_api.gdnlib" ]
+singletons=[  ]
 singletons_disabled=[  ]
 
 [gui]
@@ -84,10 +76,11 @@ pointing/emulate_touch_from_mouse=true
 [rendering]
 
 quality/driver/driver_name="GLES2"
-quality/2d/use_nvidia_rect_flicker_workaround=true
 quality/intended_usage/framebuffer_allocation=1
-quality/2d/use_pixel_snap=true
+2d/snapping/use_gpu_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 quality/depth/hdr=false
 environment/default_environment="res://default_env.tres"
+quality/2d/use_nvidia_rect_flicker_workaround=true
+quality/2d/use_pixel_snap=true
